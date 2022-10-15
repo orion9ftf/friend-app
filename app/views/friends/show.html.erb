@@ -1,0 +1,16 @@
+<main class="container">
+  <div class="bg-light p-5 rounded">
+    <h2 class="text-primary"><%= @friend.first_name %> <%= @friend.last_name %></h2>
+    <hr class="my-4">
+    <p class="lead">Email: <%= @friend.email %></p>
+    <p>Phone: <%= @friend.phone %></p>
+    <p>Twitter: <%= @friend.twitter %></p>
+    <p>Facebook: <%= @friend.facebook %></p>
+    <p>Instagram: <%= @friend.instagram %></p>
+    
+    <%= link_to "Edit", edit_friend_path(@friend), class: "btn btn-lg btn-warning" %> |
+    <%= link_to "Destroy", @friend, method: :delete, class: "btn btn-lg btn-danger" %> |
+    <%= link_to "Back", friends_path, class: "btn btn-lg btn-secondary" %>
+
+  </div>
+</main>

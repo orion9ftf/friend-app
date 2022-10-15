@@ -1,0 +1,45 @@
+<h1 class="text-center">Friends List</h1>
+
+<%= link_to "+", new_friend_path, class: 'btn btn-primary' %>
+Soy: <%= current_user.email %>
+
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">First name:</th>
+      <th scope="col">Last name:</th>
+      <th scope="col">Email</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Twitter</th>
+      <th scope="col">Facebook</th>
+      <th scope="col">Instagram</th>
+      <th></th>
+      <th scope="col">Actions</th>
+      <th></th>
+    </tr>
+  </thead>
+    <tbody>
+      <% @friends.each do |friend| %>
+        <tr>
+          <th scope="row"><%= friend.first_name %></th>
+          <td><%= friend.last_name %></td>
+          <td><%= friend.email %></td>
+          <td><%= friend.phone %></td>
+          <td><%= friend.twitter %></td>
+          <td><%= friend.facebook %></td>
+          <td><%= friend.instagram %></td>
+          <td><%= link_to "Show", friend, class: "btn btn-success" %></td>
+          <td><%= link_to 'Edit', edit_friend_path(friend), class: "btn btn-warning" %>
+            <i class="fa-solid fa-pen-to-square"></i>
+          </td>
+          <td><%= link_to "Destroy", @friend, method: :delete, class: "btn btn-danger" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+</table>
+
+<br />
+<br />
+<br />
+<br />
+<br />
