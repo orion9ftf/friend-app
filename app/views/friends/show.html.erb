@@ -8,9 +8,9 @@
     <p>Facebook: <%= @friend.facebook %></p>
     <p>Instagram: <%= @friend.instagram %></p>
     
-    <%= link_to "Edit", edit_friend_path(@friend), class: "btn btn-lg btn-warning" %> |
-    <%= link_to "Destroy", @friend, method: :delete, class: "btn btn-lg btn-danger" %> |
-    <%= link_to "Back", friends_path, class: "btn btn-lg btn-secondary" %>
+    <%= link_to "Edit", edit_friend_path(@friend), class: "btn btn-lg btn-warning btn-sm" %> |
+    <%= link_to "Destroy", @friend, method: :delete, class: "btn btn-lg btn-danger btn-sm" %> |
+    <%= link_to "Back", friends_path, class: "btn btn-lg btn-secondary btn-sm" %>
 
   </div>
 </main>

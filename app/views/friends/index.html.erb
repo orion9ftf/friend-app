@@ -6,34 +6,29 @@ Soy: <%= current_user.email %>
 <table class="table">
   <thead class="thead-dark">
     <tr>
-      <th scope="col">First name:</th>
-      <th scope="col">Last name:</th>
+      <th scope="col">Name:</th>
       <th scope="col">Email</th>
       <th scope="col">Phone</th>
       <th scope="col">Twitter</th>
       <th scope="col">Facebook</th>
       <th scope="col">Instagram</th>
       <th></th>
-      <th scope="col">Actions</th>
       <th></th>
     </tr>
   </thead>
     <tbody>
       <% @friends.each do |friend| %>
-        <tr>
-          <th scope="row"><%= friend.first_name %></th>
-          <td><%= friend.last_name %></td>
-          <td><%= friend.email %></td>
-          <td><%= friend.phone %></td>
-          <td><%= friend.twitter %></td>
-          <td><%= friend.facebook %></td>
-          <td><%= friend.instagram %></td>
-          <td><%= link_to "Show", friend, class: "btn btn-success" %></td>
-          <td><%= link_to 'Edit', edit_friend_path(friend), class: "btn btn-warning" %>
-            <i class="fa-solid fa-pen-to-square"></i>
-          </td>
-          <td><%= link_to "Destroy", @friend, method: :delete, class: "btn btn-danger" %></td>
-        </tr>
+        <% if friend.user == current_user %>
+          <tr>
+            <th scope="row"><%= link_to friend.first_name + ' ' + friend.last_name, friend %></th>
+            <td><%= friend.email %></td>
+            <td><%= friend.phone %></td>
+            <td><%= friend.twitter %></td>
+            <td><%= friend.facebook %></td>
+            <td><%= friend.instagram %></td>
+            <td><%= link_to "Destroy", @friend, method: :delete, class: "btn btn-danger btn-sm" %></td>
+          </tr>
+        <% end %>
       <% end %>
     </tbody>
 </table>

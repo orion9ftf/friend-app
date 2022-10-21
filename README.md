@@ -1,24 +1,31 @@
-# README
+# Friends App
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+```shell
+$ rails _7.0.4_ new friends_app
+```
 
-Things you may want to cover:
+```shell
+$ rails g scaffold friends first_name last_name email phone twitter facebook instagram
+```
 
-* Ruby version
+```shell
+$ bundle add devise
+```
 
-* System dependencies
+```shell
+$ rails g devise:install
+```
 
-* Configuration
+```shell
+$ rails g devise User
+```
 
-* Database creation
+```shell
+$ rails g migration add_user_id_to_friends user_id:integer:index
+```
 
-* Database initialization
+```shell
+$ rails db:migrate
+```
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...

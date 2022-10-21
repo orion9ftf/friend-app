@@ -14,15 +14,17 @@
 
   <body>
     <%= render 'shared/navbar' %>
-      <div class="container mt-3">
         <% if notice %>
           <%= render 'layouts/alerts' %>
         <% end %>
         <br />
-        <%= yield %>
+    <div class="container">
+      <%= yield %>
+    </div>
         <br />
         <br />
-      </div>
+        <br />
+        <br />
     <%= render 'shared/footer' %>
   </body>
 </html>

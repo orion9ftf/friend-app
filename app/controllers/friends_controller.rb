@@ -1,5 +1,7 @@
 class FriendsController < ApplicationController
   before_action :set_friend, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!, except: [:index, :show]
+  #before_action :correct_user, only: [:create, :edit, :destroy]  
 
   def index
     @friends = Friend.all
@@ -10,17 +12,20 @@ class FriendsController < ApplicationController
   end
 
   def new
-    @friend = Friend.new
+    #@friend = Friend.new
+    #@friend = current_user.friends.build(friend_params)
+    @friend = current_user.friends.new    
   end
 
   def edit
   end
 
   def create
-    @friend = Friend.new(friend_params)
+    #@friend = Friend.new(friend_params)
+    @friend = current_user.friends.build(friend_params)
 
     respond_to do |format|
-      if @friend.save
+      if @friend.save 
         format.html { redirect_to friend_url(@friend), notice: "Friend was successfully created." }
         format.json { render :show, status: :created, location: @friend }
       else
@@ -51,12 +56,18 @@ class FriendsController < ApplicationController
     end
   end
 
+  def correct_user
+    @friend = current_user.friends.find_by(id: params[:id])
+    redirect_to friends_path, notice: 'no estás autorizado para editar este amig@' if @friend.nil?
+  end
+  
+
   private
     def set_friend
       @friend = Friend.find(params[:id])
     end
 
     def friend_params
-      params.require(:friend).permit(:first_name, :last_name, :email, :phone, :twitter, :facebook, :instagram)
+      params.require(:friend).permit(:first_name, :last_name, :email, :phone, :twitter, :facebook, :instagram, :user_id)
     end
 end
